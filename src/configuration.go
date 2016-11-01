@@ -152,7 +152,7 @@ func (c *tConfig) ReadTokens() error {
 
 	if err != nil {
 		// It's okay to have no token config (yet)
-		if err.Error() != "open "+c.HomeDir+"/.gotp/token: no such file or directory" {
+		if err.Error() == "open "+c.HomeDir+"/.gotp/token: no such file or directory" {
 			return nil
 		}
 
@@ -163,6 +163,10 @@ func (c *tConfig) ReadTokens() error {
 	err = json.Unmarshal(data, &c.Tokens)
 
 	if err != nil {
+    if err.Error() == "open "+c.HomeDir+"/.gotp/token: no such file or directory" {
+      return nil
+    }
+
 		color.Red("::Failed to read OTP config file: %s\n", err.Error())
 		return err
 	}

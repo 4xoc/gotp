@@ -201,7 +201,7 @@ func parseURI(uri *string, otp *tOTP) error {
 
 	tmpName = strings.Split(tmpLabel, ":")
 
-	if len(tmpLabel) > 1 {
+	if len(tmpName) > 1 {
 		// Actually split the string.
 		if otp.Label == "" {
 			// Only use the given label if none has been provided by the user.
@@ -249,16 +249,6 @@ func (otp *tOTP) Verify() error {
 
 	if otp.Label == "" {
 		color.Red("::Label is missing")
-		errorExists = true
-	}
-
-	if otp.Issuer == "" {
-		color.Red("::Issuer is missing")
-		errorExists = true
-	}
-
-	if otp.User == "" {
-		color.Red("::User is missing")
 		errorExists = true
 	}
 
