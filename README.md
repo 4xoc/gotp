@@ -4,9 +4,7 @@ This tool allows OTP management and generating hash or time based OTPs.
 
 ## Installation
 
-1. `go get ` all 3rd party modules (see list below)
-2. Compile using `go build -o gotp src/*.go`
-3. `mv gotp /bin/gotp` to make gOTP available from everywhere
+Compile using `go build -o gotp *.go`
 
 ## How to use it
 
